@@ -47,9 +47,10 @@ locals {
   zone_config = distinct(flatten([for zone, value in local.config : [
     for subdomain, record in value : {
       "${subdomain}.${zone}" = merge(record, {
-        subdomain : subdomain,
         zone : zone,
         ttl : contains(keys(record), "ttl") ? record.ttl : local.default_ttl
+        # key record is subdomain by default, otherwise add subdomain key
+        subdomain : contains(keys(record), "subdomain") ? record.subdomain : subdomain,
       })
     }
     ]
@@ -89,7 +90,7 @@ locals {
 # ovh domaine zone record
 #
 resource "ovh_domain_zone_record" "zone_record" {
-  for_each  = local.zone_record
+  for_each = local.zone_record
 
   fieldtype = each.value.fieldtype
   subdomain = each.value.subdomain
