@@ -48,6 +48,13 @@ domain.com:
     fieldtype: "A"
     ttl: 120
     target: "192.168.1.5"
+  #
+  # wildcard (add quotes)
+  #
+  "*.web":
+    fieldtype: "A"
+    ttl: 120
+    target: "192.168.2.2"
 ```
 
 To override default config.yml file
