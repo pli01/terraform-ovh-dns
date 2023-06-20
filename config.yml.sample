@@ -1,0 +1,13 @@
+domain.com:
+  app1:
+    fieldtype: "A"
+    ttl: 600
+    target: "192.168.1.1"
+  app2:
+    fieldtype: "A"
+    ttl: 120
+    target: "192.168.2.2"
+  app3.test:
+    fieldtype: "A"
+    ttl: 120
+    target: "192.168.2.2"
