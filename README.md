@@ -71,7 +71,14 @@ domain.com:
     fieldtype: "A"
     ttl: 120
     target: "192.168.2.2"
+#
+# other domain, with root A record, and www record
+#
 other-domain.com:
+  ".":
+    fieldtype: "A"
+    ttl: 600
+    target: "192.168.3.1"
   www:
     fieldtype: "A"
     ttl: 600
